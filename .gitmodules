@@ -1,4 +1,0 @@
-[submodule "src/Posh.Get-VSInstallDir"]
-	path = src/Posh.Get-VSInstallDir
-	url = https://github.com/BinToss/Posh.Get-VSInstallDir
-	branch = main
