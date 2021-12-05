@@ -8,7 +8,7 @@ function Enter-VSDevEnv {
     )
     if ([string]::isNullOrEmpty($VSInstallDir)) {
         try{
-            $VSInstallDir = Get-VSInstallDir -Prerelease $true;
+            $VSInstallDir = Get-VSInstallDir;
             if ([string]::isNullOrEmpty($VSInstallDir)) {
                 throw [System.IO.ArgumentNullException] "Parameter VSInstallDir is null or empty."
             }
