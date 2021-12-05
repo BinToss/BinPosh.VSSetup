@@ -1,16 +1,23 @@
+# EVSDE
+#Requires -Modules BinPosh.GVSID
+
 function Enter-VSDevEnv {
     [CmdletBinding()] param (
-        [Parameter()] [bool] $Prerelease = $true
+        # Optional, but recommended. Get-VSInstallDir is used if VSInstallDir is not specified.
+        [Parameter()] [String] $VSInstallDir
     )
-
-    try {
-        $vsInstallDir = Get-vsInstallDir;
+    if ([string]::isNullOrEmpty($VSInstallDir)) {
+        try{
+            $VSInstallDir = Get-VSInstallDir -Prerelease $true;
+            if ([string]::isNullOrEmpty($VSInstallDir)) {
+                throw [System.IO.ArgumentNullException] "Parameter VSInstallDir is null or empty."
+            }
+        }
+        catch {
+            throw [System.IO.DirectoryNotFoundException] "Failed to find a Visual Studio or MSBuild instance automatically."
+        }
     }
-    catch {
-        Import-Module "$PSScriptRoot\..\deps\Posh.Get-VSInstallDir\src\Get-VSInstallDir.psm1"
-        $vsInstallDir = Get-vsInstallDir;
-    }
-
-    Import-Module "$vsInstallDir/Common7/Tools/Microsoft.VisualStudio.DevShell.dll";
-    Enter-VsDevShell -VsInstallDir $vsInstallDir -SkipAutomaticLocation;
+    # Use module `Microsoft.VisualStudio.DevShell.dll`
+    Import-Module (Get-ChildItem $VSInstallDir -Recurse -File -Filter Microsoft.VisualStudio.DevShell.dll).FullName
+    Enter-VsDevShell -VsInstallDir $VSInstallDir -SkipAutomaticLocation;
 }

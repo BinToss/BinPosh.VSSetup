@@ -3,7 +3,7 @@
 
 @{
     RootModule = '.\Enter-VSDevEnv.psm1'
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '2.0.0'
     GUID = 'eb8aa0e0-6fab-4487-82c0-a0f06660d7da'
     Author = 'BinToss'
     Copyright = '(c) 2021 Noah Sherwin. All rights reserved.'
