@@ -8,7 +8,7 @@
 
 function Get-VSInstallDir {
     [CmdletBinding()] param (
-        [Parameter()] [bool] $Prerelease = $false,
+        [Parameter()] [switch] $Prerelease,
         [Parameter()] [string[]] $Filter
     )
     $All = ($Prerelease ? (Get-VSSetupInstance -All -Prerelease) : (Get-VSSetupInstance -All));
