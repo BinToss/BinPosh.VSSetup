@@ -2,8 +2,8 @@
 # PowerShell module for marshaling bash completions into PowerShell.
 
 @{
-    RootModule = '.\Enter-VSDevEnv.psm1'
-    ModuleVersion = '2.0.0'
+    RootModule = '.\BinPosh.EVSDE.psm1'
+    ModuleVersion = '2.0.2'
     GUID = 'eb8aa0e0-6fab-4487-82c0-a0f06660d7da'
     Author = 'BinToss'
     Copyright = '(c) 2021 Noah Sherwin. All rights reserved.'
