@@ -12,7 +12,7 @@
 RootModule = '.\BinPosh.GVSID.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.1'
+ModuleVersion = '1.1.2'
 
 # ID used to uniquely identify this module
 GUID = '1b63cea0-73a9-488c-8246-5e865ff5376b'

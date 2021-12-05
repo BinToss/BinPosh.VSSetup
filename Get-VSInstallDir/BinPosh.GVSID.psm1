@@ -12,7 +12,7 @@ function Get-VSInstallDir {
         [Parameter()] [string[]] $Filter
     )
     $All = ($Prerelease ? (Get-VSSetupInstance -All -Prerelease) : (Get-VSSetupInstance -All));
-    $FilterIsNullOrEmpty = ($Filter.Equals($null) || $Filter.Count.Equals(0));
+    $FilterIsNullOrEmpty = ($null -eq $Filter || $Filter.Count.Equals(0));
     $Match = ($FilterIsNullOrEmpty) ? ($All | Select-VSSetupInstance -Latest) : ($All | Select-VSSetupInstance -Latest -Require $Filter);
     if ([String]::isNullOrEmpty($Match.InstallationPath)) {
         $msg_noMatches = "Failed to find a Visual Studio or MSBuild Tools install with the following criteria:`n";
